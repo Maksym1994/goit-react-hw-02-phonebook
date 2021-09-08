@@ -1,0 +1,8 @@
+.title {
+  display: block;
+  margin: 40px;
+  font-family: 'Roboto', sans-serif;
+  color: rgb(117, 116, 116);
+  text-transform: uppercase;
+  font-size: 26px;
+}

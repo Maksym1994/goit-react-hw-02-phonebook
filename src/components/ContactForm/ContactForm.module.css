@@ -1,0 +1,41 @@
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.input {
+  margin-left: 30px;
+  width: 200px;
+  height: 25px;
+  background-color: rgb(236, 236, 236);
+  border: 1px solid rgb(168, 168, 168);
+}
+
+.labelTitle {
+  display: block;
+  margin: 12px 30px;
+  font-family: 'Roboto', sans-serif;
+  color: rgb(0, 0, 0);
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+.button {
+  margin: 35px;
+  width: 180px;
+  height: 35px;
+
+  background-color: rgb(255, 255, 255);
+  color: rgb(31, 31, 31);
+  border-color: rgb(0, 0, 0);
+  border-radius: 5px;
+  text-align: center;
+
+  cursor: pointer;
+}
+
+.button:hover,
+.button:focus {
+  background-color: rgb(60, 25, 253);
+  color: rgb(255, 255, 255);
+}
