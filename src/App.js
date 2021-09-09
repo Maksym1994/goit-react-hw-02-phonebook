@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ContactForm from 'components/ContactForm';
 import ContactList from 'components/ContactList';
 import Filter from 'components/Filter';
+import { v4 as uuidv4 } from 'uuid';
 import s from 'App.module.css';
 
 export class App extends Component {
@@ -20,18 +21,21 @@ export class App extends Component {
       alert(`${e.name} is already in contacts.`);
       return;
     }
-    const contact = { name: e.name, number: e.number, id: Math.round(Math.random() * 10000) };
+    const NewContact = {
+      name: e.name,
+      number: e.number,
+      id: uuidv4(),
+    };
+
     this.setState(prevState => ({
-      contacts: [contact, ...prevState.contacts],
+      contacts: [NewContact, ...prevState.contacts],
     }));
   };
 
-  handleDeleteContact = e => {
-    this.setState({
-      contacts: this.state.contacts.filter(contact => {
-        return `${contact.id}` !== `${e.target.id}`;
-      }),
-    });
+  handleDeleteContact = id => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(contact => contact.id !== id),
+    }));
   };
 
   changeFilter = e => {
@@ -54,7 +58,7 @@ export class App extends Component {
         <ContactForm onSubmit={handleSubmit} name={name} number={number} onChange={handleChange} />
         {contacts.length > 1 && <Filter filter={filter} onChange={changeFilter} />}
         <h2 className={s.title}>Contacts</h2>
-        <ContactList contacts={getFilteredContacts()} onClick={handleDeleteContact} />
+        <ContactList contacts={getFilteredContacts()} onDeleteContacts={handleDeleteContact} />
       </div>
     );
   }
